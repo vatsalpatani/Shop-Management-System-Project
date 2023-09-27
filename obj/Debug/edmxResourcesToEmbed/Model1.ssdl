@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="caddress" Type="text" Nullable="false" />
+    <Property Name="cphno" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cemail" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\VATSAL\C#\SMS\SMS.MDF.dbo.login' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="unm" />
+      <PropertyRef Name="pwd" />
+    </Key>
+    <Property Name="unm" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pwd" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order_details">
+    <Key>
+      <PropertyRef Name="oid" />
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="oid" Type="int" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="oid" />
+    </Key>
+    <Property Name="oid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cid" Type="int" Nullable="false" />
+    <Property Name="odate" Type="date" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pamount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="vid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stocks">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendors">
+    <Key>
+      <PropertyRef Name="vid" />
+    </Key>
+    <Property Name="vid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vaddress" Type="text" Nullable="false" />
+    <Property Name="vphno" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="vemail" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\VATSAL\C#\SMS\SMS.MDF.dbo.CURRENTLY_AVAILABLE_STOCK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CURRENTLY_AVAILABLE_STOCK">
+    <Key>
+      <PropertyRef Name="pid" />
+      <PropertyRef Name="pname" />
+      <PropertyRef Name="pamount" />
+      <PropertyRef Name="quantity" />
+    </Key>
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="pname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pamount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\VATSAL\C#\SMS\SMS.MDF.dbo.order_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="order_view">
+    <Key>
+      <PropertyRef Name="oid" />
+      <PropertyRef Name="cid" />
+      <PropertyRef Name="cname" />
+      <PropertyRef Name="caddress" />
+      <PropertyRef Name="cphno" />
+      <PropertyRef Name="cemail" />
+      <PropertyRef Name="pid" />
+      <PropertyRef Name="pname" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="amount" />
+      <PropertyRef Name="odate" />
+    </Key>
+    <Property Name="oid" Type="int" Nullable="false" />
+    <Property Name="cid" Type="int" Nullable="false" />
+    <Property Name="cname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="caddress" Type="text" Nullable="false" />
+    <Property Name="cphno" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cemail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="pname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="odate" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\VATSAL\C#\SMS\SMS.MDF.dbo.product_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="product_view">
+    <Key>
+      <PropertyRef Name="pid" />
+      <PropertyRef Name="pname" />
+      <PropertyRef Name="pamount" />
+      <PropertyRef Name="vid" />
+      <PropertyRef Name="vname" />
+    </Key>
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="pname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pamount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="vid" Type="int" Nullable="false" />
+    <Property Name="vname" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Order_detai__oid__531856C7">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Order_details" Type="Self.Order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="oid" />
+      </Principal>
+      <Dependent Role="Order_details">
+        <PropertyRef Name="oid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order_detai__pid__540C7B00">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Order_details" Type="Self.Order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="Order_details">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stocks__pid__160F4887">
+    <End Role="Products" Type="Self.Products" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Stocks" Type="Self.Stocks" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="Stocks">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1">
+    <End Role="Vendors" Type="Self.Vendors" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendors">
+        <PropertyRef Name="vid" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="vid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SMSModelStoreContainer">
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_details" EntityType="Self.Order_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="login" EntityType="Self.login" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [login].[unm] AS [unm], 
+    [login].[pwd] AS [pwd]
+    FROM [dbo].[login] AS [login]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CURRENTLY_AVAILABLE_STOCK" EntityType="Self.CURRENTLY_AVAILABLE_STOCK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CURRENTLY_AVAILABLE_STOCK].[pid] AS [pid], 
+    [CURRENTLY_AVAILABLE_STOCK].[pname] AS [pname], 
+    [CURRENTLY_AVAILABLE_STOCK].[pamount] AS [pamount], 
+    [CURRENTLY_AVAILABLE_STOCK].[quantity] AS [quantity]
+    FROM [dbo].[CURRENTLY_AVAILABLE_STOCK] AS [CURRENTLY_AVAILABLE_STOCK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="order_view" EntityType="Self.order_view" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [order_view].[oid] AS [oid], 
+    [order_view].[cid] AS [cid], 
+    [order_view].[cname] AS [cname], 
+    [order_view].[caddress] AS [caddress], 
+    [order_view].[cphno] AS [cphno], 
+    [order_view].[cemail] AS [cemail], 
+    [order_view].[pid] AS [pid], 
+    [order_view].[pname] AS [pname], 
+    [order_view].[quantity] AS [quantity], 
+    [order_view].[amount] AS [amount], 
+    [order_view].[odate] AS [odate]
+    FROM [dbo].[order_view] AS [order_view]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="product_view" EntityType="Self.product_view" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [product_view].[pid] AS [pid], 
+    [product_view].[pname] AS [pname], 
+    [product_view].[pamount] AS [pamount], 
+    [product_view].[vid] AS [vid], 
+    [product_view].[vname] AS [vname]
+    FROM [dbo].[product_view] AS [product_view]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Order_detai__oid__531856C7" Association="Self.FK__Order_detai__oid__531856C7">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Order_details" EntitySet="Order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order_detai__pid__540C7B00" Association="Self.FK__Order_detai__pid__540C7B00">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Order_details" EntitySet="Order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stocks__pid__160F4887" Association="Self.FK__Stocks__pid__160F4887">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Stocks" EntitySet="Stocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK1" Association="Self.FK1">
+      <End Role="Vendors" EntitySet="Vendors" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
